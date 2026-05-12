@@ -17,7 +17,7 @@ public class Client {
     private String doc;
     private String email;
 
-    @Column(name = "DATACADASTROs")
+    @Column(name = "DATACADASTRO")
     private String dataCadastro;
 
     public Long getId() {
