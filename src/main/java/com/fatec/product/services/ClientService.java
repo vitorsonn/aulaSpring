@@ -25,4 +25,33 @@ public class ClientService {
         return repository.findById(id).orElseThrow(() -> new EntityNotFoundException());
     }
 
+    public void delete(Long id){
+        if(repository.existsById(id)){
+            repository.deleteById(id);
+        }
+
+        else{
+            throw new EntityNotFoundException("Cliente não encontrado");
+
+        }
+
+    }
+
+    public Client save(Client client){
+        return repository.save(client);
+    }
+
+    public void update (Client client, Long id){
+        Client c = repository.findById(id)
+                .orElseThrow( () -> new EntityNotFoundException("Cliente não cadastrado"));
+
+        c.setName(client.getName());
+        c.setEmail(client.getEmail());
+        c.setDoc(client.getDoc());
+        c.setDataCadastro(client.getDataCadastro());
+
+        repository.save(c);
+
+    }
+
 }
